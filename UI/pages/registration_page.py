@@ -1,3 +1,5 @@
+import uuid
+
 from .base_page import BasePage
 from UI.locators.registration_page_locators import RegistrationPageLocators
 import os
@@ -20,7 +22,8 @@ class RegistrationPage(BasePage):
     def go_to_reg_business_email(self):
         business_email = self.browser.find_element(*RegistrationPageLocators.REG_BUSINESS_EMAIL)
         business_email.clear()
-        business_email.send_keys(os.environ['VALID_REG_BUSINESS_EMAIL'])
+        e = str(uuid.uuid4().clock_seq)
+        business_email.send_keys(os.environ[e + 'VALID_REG_BUSINESS_EMAIL'])
 
     def go_to_reg_organization(self):
         organization = self.browser.find_element(*RegistrationPageLocators.REG_ORGANIZATION)

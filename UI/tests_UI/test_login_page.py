@@ -59,9 +59,8 @@ def test_login_negative_email(browser, email):
     with allure.step('Make screenshot'):
         e = str(uuid.uuid4().clock_seq)
         allure.attach(browser.get_screenshot_as_png(), name='result' + e, attachment_type=AttachmentType.PNG)
-        text_of_error_message = error_message.text
 
-    assert text_of_error_message == "Wrong email or password!"
+    assert error_message.text == "Wrong email or password!"
 
 
 @allure.feature('Login')
@@ -86,9 +85,8 @@ def test_login_negative_password(browser, password):
     with allure.step('Make screenshot'):
         e = str(uuid.uuid4().clock_seq)
         allure.attach(browser.get_screenshot_as_png(), name='result' + e, attachment_type=AttachmentType.PNG)
-        text_of_error_message = error_message.text
 
-    assert text_of_error_message == "Wrong email or password!"
+    assert error_message.text == "Wrong email or password!"
 
 
 @allure.feature('Registration')

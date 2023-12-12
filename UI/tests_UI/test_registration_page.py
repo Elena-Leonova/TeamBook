@@ -9,7 +9,6 @@ from UI.locators.planning_page_locators import PlanningPageLocators
 from UI.locators.registration_page_locators import RegistrationPageLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from conftest import browser
 import allure
 import data
 
@@ -68,10 +67,9 @@ def test_registration_negative_existed_email(browser):
     with allure.step('Make screenshot'):
         e = str(uuid.uuid4().clock_seq)
         allure.attach(browser.get_screenshot_as_png(), name='result' + e, attachment_type=AttachmentType.PNG)
-        text_of_error_message = error_message.text
 
-    assert text_of_error_message == ("An account with this email address already exist. "
-                                     "Please use another Email OR login to existing one.")
+    assert error_message.text == ("An account with this email address already exist. "
+                                  "Please use another Email OR login to existing one.")
 
 
 @allure.feature('Registration')
@@ -100,9 +98,8 @@ def test_registration_negative_email(browser, email):
     with allure.step('Make screenshot'):
         e = str(uuid.uuid4().clock_seq)
         allure.attach(browser.get_screenshot_as_png(), name='result' + e, attachment_type=AttachmentType.PNG)
-        text_of_error_message = error_message.text
 
-    assert text_of_error_message == "Email is not valid."
+    assert error_message.text == "Email is not valid."
 
 
 @allure.feature('Registration')
@@ -132,9 +129,8 @@ def test_registration_negative_password_not_8_characters(browser):
     with allure.step('Make screenshot'):
         e = str(uuid.uuid4().clock_seq)
         allure.attach(browser.get_screenshot_as_png(), name='result' + e, attachment_type=AttachmentType.PNG)
-        text_of_error_message = error_message.text
 
-    assert text_of_error_message == "Password should contain 8 or more characters"
+    assert error_message.text == "Password should contain 8 or more characters"
 
 
 @allure.feature('Registration')

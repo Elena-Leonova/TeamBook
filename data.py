@@ -1,5 +1,5 @@
 existed_email = "test@gmail.com"
-not_existed_email = '12345@gmail.com'
+not_existed_email = '123456@gmail.com'
 invalid_email_1 = 'testgmail.com'
 invalid_email_2 = '@gmail.com'
 
@@ -18,5 +18,7 @@ valid_name_of_team = 'qa_team'
 valid_name_of_team_1 = "qa123456789876543210alhtdgejds"
 valid_name_of_team_2 = "qaL"
 
-
-
+valid_first_name_of_user = "Pasha"
+valid_last_name_of_user = "Petrov"
+valid_user_phone_number = "0533987231"
+valid_email_user = '123@gmail.com'

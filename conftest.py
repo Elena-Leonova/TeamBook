@@ -31,5 +31,8 @@ def login(browser):
     page.go_to_login_email()
     page.go_to_login_password()
     page.go_to_login_btn()
+    WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located(PlanningPageLocators.USER_MENU)
+    )
 
 
