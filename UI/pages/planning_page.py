@@ -20,12 +20,14 @@ class PlanningPage(BasePage):
         create_new_user.click()
 
     def go_to_user_first_name(self):
+        word = str(uuid.uuid4().hex[:2])
         user_first_name = self.browser.find_element(*PlanningPageLocators.FIRST_NAME)
-        user_first_name.send_keys(data.valid_first_name_of_user)
+        user_first_name.send_keys(data.valid_first_name_of_user + word)
 
     def go_to_user_last_name(self):
+        word = str(uuid.uuid4().hex[:2])
         user_last_name = self.browser.find_element(*PlanningPageLocators.LAST_NAME)
-        user_last_name.send_keys(data.valid_last_name_of_user)
+        user_last_name.send_keys(data.valid_last_name_of_user + word)
 
     def go_to_user_email(self):
         user_email = self.browser.find_element(*PlanningPageLocators.EMAIL)

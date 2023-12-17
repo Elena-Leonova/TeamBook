@@ -110,7 +110,7 @@ def test_registration_negative_email(browser, email):
 def test_registration_negative_password_not_8_characters(browser):
     page = RegistrationPage(browser, urls.LINK_REGISTRATION)
     page.open()
-    with allure.step(f'Registration with invalid password: {data.invalid_password_1}'):
+    with allure.step(f'Registration with invalid password: {data.password_less_8_symbols}'):
         page.go_to_reg_first_name()
         page.go_to_reg_last_name()
         business_email = browser.find_element(*RegistrationPageLocators.REG_BUSINESS_EMAIL)
@@ -119,7 +119,7 @@ def test_registration_negative_password_not_8_characters(browser):
         page.go_to_reg_organization()
         reg_password = browser.find_element(*RegistrationPageLocators.REG_PASSWORD)
         reg_password.clear()
-        reg_password.send_keys(data.invalid_password_1)
+        reg_password.send_keys(data.password_less_8_symbols)
         page.go_to_reg_checkbox()
         page.go_to_reg_create_org_btn()
     with allure.step("Verify error message is displayed"):
@@ -138,7 +138,7 @@ def test_registration_negative_password_not_8_characters(browser):
 @allure.severity('critical')
 @pytest.mark.smoke
 @pytest.mark.regression
-@pytest.mark.parametrize('password', [data.invalid_password_2, data.invalid_password_3])
+@pytest.mark.parametrize('password', [data.password_without_letters, data.password_without_numbers])
 def test_registration_negative_password(browser, password):
     page = RegistrationPage(browser, urls.LINK_REGISTRATION)
     page.open()
