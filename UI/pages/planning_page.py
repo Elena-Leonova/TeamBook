@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import data
@@ -93,3 +95,19 @@ class PlanningPage(BasePage):
     def go_to_cancel_team_btn(self):
         cancel_team_btn = self.browser.find_element(*PlanningPageLocators.CANCEL_TEAM_BTN)
         cancel_team_btn.click()
+
+    def go_to_delete_team_btn(self):
+        delete_team_btn = self.browser.find_element(*PlanningPageLocators.DELETE_TEAM)
+        delete_team_btn.click()
+
+    def go_to_field_input_team_name(self):
+        name_of_team = self.browser.find_element(*PlanningPageLocators.NAME_OF_TEAM)
+        text_of_name_of_team = name_of_team.text
+        field_input_team_name = self.browser.find_element(*PlanningPageLocators.FIELD_INPUT_TEAM_NAME)
+        field_input_team_name.send_keys(text_of_name_of_team)
+
+    def go_to_confirm_delete_team(self):
+        confirm_delete_team = self.browser.find_element(*PlanningPageLocators.CONFIRM_DELETE_TEAM)
+        confirm_delete_team.click()
+
+

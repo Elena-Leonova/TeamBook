@@ -13,7 +13,6 @@ import urls
 from UI.locators.planning_page_locators import PlanningPageLocators
 from UI.pages.planning_page import PlanningPage
 
-
 word = str(uuid.uuid4().hex[:2])
 
 
@@ -21,9 +20,10 @@ word = str(uuid.uuid4().hex[:2])
 @allure.story('Add user with valid data')
 @allure.severity('major')
 @pytest.mark.regression
+@pytest.mark.parametrize("run_number", range(2))
 @pytest.mark.parametrize('name', [data.valid_first_name_of_user, data.first_name_of_user_empty + word,
                                   data.first_name_of_user_32_chars])
-def test_add_user_positive_gigo_team(browser, login, name):
+def test_add_user_positive_gigo_team(browser, login, name, run_number):
     chars = str(uuid.uuid4().hex[:2])
     page = PlanningPage(browser, urls.LINK_PLANNING)
     page.open()
@@ -167,7 +167,7 @@ def test_add_user_negative_invalid_last_name(browser, login, last_name):
 @allure.story('Add user with the same name of existed user')
 @allure.severity('major')
 @pytest.mark.regression
-def test_add_user_negative_the_same_name(browser, login):
+def test_add_user_negative_the_same_name_and_last_name(browser, login):
     page = PlanningPage(browser, urls.LINK_PLANNING)
     page.open()
     page.go_to_add_user()
@@ -179,7 +179,8 @@ def test_add_user_negative_the_same_name(browser, login):
         create_new_user.click()
         user_first_name = browser.find_element(*PlanningPageLocators.FIRST_NAME)
         user_first_name.send_keys(data.valid_first_name_of_user)
-        page.go_to_user_last_name()
+        user_last_name = browser.find_element(*PlanningPageLocators.LAST_NAME)
+        user_last_name.send_keys(data.valid_last_name_of_user)
         page.go_to_user_email()
         page.go_to_user_phone_number()
         page.go_to_user_role()
@@ -194,7 +195,7 @@ def test_add_user_negative_the_same_name(browser, login):
     assert error_message.text == "User with this name already exists."
 
 
-@allure.feature('Add user')
+# @allure.feature('Add user')
 @allure.story('Add user with the same email of existed user')
 @allure.severity('major')
 @pytest.mark.regression
@@ -324,3 +325,23 @@ def test_add_new_team_negative_invalid_name_of_team(browser, login, name):
         num = str(uuid.uuid4().clock_seq)
         allure.attach(browser.get_screenshot_as_png(), name="result" + num, attachment_type=AttachmentType.PNG)
     assert text_of_error_message == "Team name must be 3 to 30 characters long."
+
+# @allure.feature("Delete team")
+# @allure.severity("major")
+# @pytest.mark.regression
+# def test_delete_team(browser, login):
+#     page = PlanningPage(browser, urls.LINK_PLANNING)
+#     page.open()
+#     page.go_to_manage_team()
+#     number_of_teams_before_deletion = len(browser.find_elements(*PlanningPageLocators.ROW_OF_TEAM))
+#     page.go_to_delete_team_btn()
+#     page.go_to_field_input_team_name()
+#     page.go_to_confirm_delete_team()
+#     time.sleep(1)
+#     number_of_teams_after_deletion = len(browser.find_elements(*PlanningPageLocators.ROW_OF_TEAM))
+#     with allure.step('Make screenshot'):
+#         num = str(uuid.uuid4().clock_seq)
+#         allure.attach(browser.get_screenshot_as_png(), name="result" + num, attachment_type=AttachmentType.PNG)
+#         assert number_of_teams_after_deletion != number_of_teams_before_deletion
+
+# "Command name entered incorrectly!"

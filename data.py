@@ -35,5 +35,6 @@ last_name_of_user_more_32_chars = "cyclopentanoperhydrophenanthrenes"
 valid_user_phone_number = "0533987231"
 phone_number_less_6_digits = "12345"
 phone_number_more_14_digits = "123456789876543"
+phone_number_letters = "djkshsk"
 
 valid_email_user = '123@gmail.com'
