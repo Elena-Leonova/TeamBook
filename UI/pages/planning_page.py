@@ -24,21 +24,21 @@ class PlanningPage(BasePage):
     def go_to_user_first_name(self):
         word = str(uuid.uuid4().hex[:2])
         user_first_name = self.browser.find_element(*PlanningPageLocators.FIRST_NAME)
-        user_first_name.send_keys(data.valid_first_name_of_user + word)
+        user_first_name.send_keys(data.PlanningData.valid_first_name_of_user + word)
 
     def go_to_user_last_name(self):
         word = str(uuid.uuid4().hex[:2])
         user_last_name = self.browser.find_element(*PlanningPageLocators.LAST_NAME)
-        user_last_name.send_keys(data.valid_last_name_of_user + word)
+        user_last_name.send_keys(data.PlanningData.valid_last_name_of_user + word)
 
     def go_to_user_email(self):
         user_email = self.browser.find_element(*PlanningPageLocators.EMAIL)
         e = str(uuid.uuid4().clock_seq)
-        user_email.send_keys(e + data.valid_email_user)
+        user_email.send_keys(e + data.PlanningData.valid_email_user)
 
     def go_to_user_phone_number(self):
         user_phone_number = self.browser.find_element(*PlanningPageLocators.PHONE_NUMBER)
-        user_phone_number.send_keys(data.valid_user_phone_number)
+        user_phone_number.send_keys(data.PlanningData.valid_user_phone_number)
 
     def go_to_user_role(self):
         user_role = self.browser.find_element(*PlanningPageLocators.USER_ROLE)
@@ -86,7 +86,7 @@ class PlanningPage(BasePage):
     def go_to_team_name_field(self):
         team_name_field = self.browser.find_element(*PlanningPageLocators.TEAM_NAME_FIELD)
         e = str(uuid.uuid4().clock_seq)
-        team_name_field.send_keys(data.valid_name_of_team + e)
+        team_name_field.send_keys(data.PlanningData.valid_name_of_team + e)
 
     def go_to_create_team_btn(self):
         create_team_btn = self.browser.find_element(*PlanningPageLocators.CREATE_TEAM_BTN)

@@ -44,9 +44,11 @@ class PlanningPageLocators:
     ROW_OF_TEAM = (By.CLASS_NAME, "manage-team-dialog__team-row")
     ERROR_MESSAGE_NAME = (By.CSS_SELECTOR, "div.MuiDialogContent-root.css-1ty026z > p > div.form-error__error-"
                                            "message.undefined > div > p.form-error__error-text")
-    NAME_OF_TEAM = (By.XPATH, "//h2[@id=':ru:']/p/span")
-    FIELD_INPUT_TEAM_NAME = (By.XPATH, "//input[@id=':rv:']")
-    CONFIRM_DELETE_TEAM = (By.CSS_SELECTOR, "div.MuiDialogActions-root.MuiDialogActions-spacing.css-14b29qc > "
-                                            "button:nth-child(1) > p")
+    NAME_OF_TEAM = (By.CSS_SELECTOR, "div > p:nth-of-type(2) > span")
+
+    FIELD_INPUT_TEAM_NAME = (By.CLASS_NAME, "MuiInputBase-input MuiOutlinedInput-input css-1x5jdmq")
+
+    CONFIRM_DELETE_TEAM = (By.CSS_SELECTOR, "div.MuiDialogActions-root.MuiDialogActions-spacing.css-1vskg8q > button:nth-child(1) > p")
+
 
 

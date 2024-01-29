@@ -42,7 +42,9 @@ def test_login_positive(browser):
 @allure.severity('critical')
 @pytest.mark.smoke
 @pytest.mark.regression
-@pytest.mark.parametrize('email', [data.not_existed_email, data.invalid_email_1, data.invalid_email_2])
+@pytest.mark.parametrize('email', [data.RegistrationLoginData.not_existed_email,
+                                   data.RegistrationLoginData.invalid_email_1,
+                                   data.RegistrationLoginData.invalid_email_2])
 def test_login_negative_email(browser, email):
     page = LoginPage(browser, urls.LINK_LOGIN)
     page.open()
@@ -68,7 +70,8 @@ def test_login_negative_email(browser, email):
 @allure.severity('critical')
 @pytest.mark.smoke
 @pytest.mark.regression
-@pytest.mark.parametrize('password', [data.incorrect_password_1, data.incorrect_password_2])
+@pytest.mark.parametrize('password', [data.RegistrationLoginData.incorrect_password_1,
+                                      data.RegistrationLoginData.incorrect_password_2])
 def test_login_negative_password(browser, password):
     page = LoginPage(browser, urls.LINK_LOGIN)
     page.open()
